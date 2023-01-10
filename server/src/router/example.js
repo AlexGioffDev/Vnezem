@@ -11,7 +11,7 @@ const schema = buildSchema(`
 
 
 const root = {
-    message: () => 'Hello World'
+    message: () => 'Hello!'
 }
 
 router.use('/', graphqlHTTP({
