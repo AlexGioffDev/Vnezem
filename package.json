@@ -1,0 +1,25 @@
+{
+  "name": "vnezemapp",
+  "version": "1.0.0",
+  "description": "See all the Movies or Series animation coming from Japan",
+  "main": "index.js",
+  "scripts": {
+    "watch": "npm run watch --prefix server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexGioffDev/Vnezem.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "NodeJS",
+    "Firebase",
+    "GraphQL"
+  ],
+  "author": "Alex Gioffre'",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexGioffDev/Vnezem/issues"
+  },
+  "homepage": "https://github.com/AlexGioffDev/Vnezem#readme"
+}
