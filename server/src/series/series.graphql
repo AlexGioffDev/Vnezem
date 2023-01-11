@@ -1,0 +1,8 @@
+type Query {
+    series: [Series]
+}
+
+type Series {
+    title: String
+    author: String
+}
