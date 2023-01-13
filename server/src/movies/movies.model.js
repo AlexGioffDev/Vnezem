@@ -1,5 +1,5 @@
 const axios = require('axios');
- 
+
 const havePoster = (movie) => {
     return Boolean(movie["poster_path"])
 }
@@ -27,9 +27,8 @@ const getUpcomingMovies = async () => {
         maxDate: ""
     }
 
-
     do {
-        let {data} = await axios(url, {
+        let { data } = await axios(url, {
             params: {
                 language: "en-US",
                 page: page
@@ -41,17 +40,101 @@ const getUpcomingMovies = async () => {
         totalPage = data['total_pages']
         page++;
         let filterMovies = getJapaneseMovies(data.results);
-        if(filterMovies.length > 0) {
-            results.movies = [...results.movies,  ...filterMovies]
+        if (filterMovies.length > 0) {
+            results.movies = [...results.movies, ...filterMovies]
 
         }
-    } while(page < totalPage)
+    } while (page < totalPage)
 
     return results;
 
-    
+}
+
+const getPopularMovies = async () => {
+    const url = process.env.URL_BASE + "movie/popular?api_key=" + process.env.API_KEY
+    let page = 1
+    let totalPage = 2
+    let results = {
+        movies: [],
+    }
+
+    do {
+        let { data } = await axios(url, {
+            params: {
+                language: "en-US",
+                page: page
+            }
+        })
+
+
+        totalPage = data['total_pages']
+        page++;
+        let filterMovies = getJapaneseMovies(data.results);
+        if (filterMovies.length > 0) {
+            results.movies = [...results.movies, ...filterMovies]
+
+        }
+        if (results.movies.length >= 50) {
+            break;
+        }
+
+    } while (page < totalPage)
+
+    return results;
+}
+
+const getTopRatedMovies = async () => {
+    const url = process.env.URL_BASE + "movie/top_rated?api_key=" + process.env.API_KEY
+    let page = 1
+    let totalPage = 2
+    let results = {
+        movies: [],
+    }
+
+    do {
+        let { data } = await axios(url, {
+            params: {
+                language: "en-US",
+                page: page
+            }
+        })
+
+
+        totalPage = data['total_pages']
+        page++;
+        let filterMovies = getJapaneseMovies(data.results);
+        if (filterMovies.length > 0) {
+            results.movies = [...results.movies, ...filterMovies]
+
+        }
+        if (results.movies.length >= 50) {
+            break;
+        }
+
+    } while (page < totalPage)
+
+    return results;
+}
+
+
+const getMovieDetail = async (id) => {
+    const url = process.env.URL_BASE + "/movie/" + id + "?api_key=" + process.env.API_KEY
+
+
+    const { data } = await axios(url, {
+        params: {
+            language: "en-US"
+        }
+    })
+
+    console.log(data)
+
+    return data
 }
 
 module.exports = {
-    getUpcomingMovies
+    getUpcomingMovies,
+    getMovieDetail,
+    getPopularMovies,
+    getTopRatedMovies
 }
