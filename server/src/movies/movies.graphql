@@ -1,14 +1,25 @@
 type Query {
     moviesUpcoming: MoviesUpcoming
+    moviesPopular: MoviesPopular
+    moviesTopRated: MoviesTopRated
+    movie(id: ID!): Movie
 }
 
 type MoviesUpcoming {
-    movies: [Movie]
+    movies: [MovieResult]
     maxDate: String
 }
 
+type MoviesPopular {
+    movies: [MovieResult]
+}
 
-type Movie {
+type MoviesTopRated {
+    movies: [MovieResult]
+}
+
+
+type MovieResult {
     adult: Boolean
     backdrop_path: String
     id: Int
@@ -23,4 +34,55 @@ type Movie {
     vote_average: Float
     vote_count: Int
     genre_ids: [Int]
+}
+
+type SpokenLanguages {
+  english_name: String
+  iso_639_1: String
+  name: String
+}
+
+type ProductionCountries {
+  iso_3166_1: String
+  name: String
+}
+
+type ProductionCompanies {
+  id: Int
+  logo_path: String
+  name: String
+  origin_country: String
+}
+
+type Genres {
+  id: Int
+  name: String
+}
+
+type Movie {
+  adult: Boolean
+  backdrop_path: String
+  belongs_to_collection: String
+  budget: Int
+  homepage: String
+  id: Int
+  imdb_id: String
+  original_language: String
+  original_title: String
+  overview: String
+  popularity: Float
+  poster_path: String
+  release_date: String
+  revenue: Int
+  runtime: Int
+  status: String
+  tagline: String
+  title: String
+  video: Boolean
+  vote_average: Float
+  vote_count: Int
+  spoken_languages: [SpokenLanguages]
+  production_countries: [ProductionCountries]
+  production_companies: [ProductionCompanies]
+  genres: [Genres]
 }
