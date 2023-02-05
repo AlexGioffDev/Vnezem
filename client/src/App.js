@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 import { useState } from 'react';
 import Message from './components/Message';

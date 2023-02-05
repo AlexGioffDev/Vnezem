@@ -4,7 +4,9 @@
   "description": "See all the Movies or Series animation coming from Japan",
   "main": "index.js",
   "scripts": {
-    "watch": "npm run watch --prefix server"
+    "watch:server": "npm run watch --prefix server",
+    "watch:client": "npm run start --prefix client",
+    "watch": "npm run watch:server & npm run watch:client"
   },
   "repository": {
     "type": "git",

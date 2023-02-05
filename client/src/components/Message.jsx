@@ -1,23 +1,33 @@
 import React from 'react';
-import {useQuery, gql} from '@apollo/client'
+import { useQuery, gql } from '@apollo/client'
 
 
 const MESSAGE_QUERY = gql`
     query {
-        message
+        moviesUpcoming {
+            movies {
+                title
+                original_title
+                id
+            }
+            maxDate
+        }
     }
 `
 
 const Message = () => {
 
-    const {data, loading, error} = useQuery(MESSAGE_QUERY)
+    const { data, loading, error } = useQuery(MESSAGE_QUERY)
 
     if (loading) return "Loading...";
-    if(error) return <pre>{error.message}</pre>
-
+    if (error) return <pre>{error.message}</pre>
+    const movies = data.moviesUpcoming.movies
     return (
         <div>
-            <p>{data.message}</p>
+            {
+                movies.map(({title, original_title, id}) => <p key={id}>{title} - {original_title}</p>)
+            }
+            <p>hello</p>
         </div>
     );
 }
