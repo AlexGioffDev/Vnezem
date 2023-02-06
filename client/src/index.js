@@ -2,9 +2,13 @@ import './config/firebase.config'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {RouterProvider} from 'react-router-dom';
+import Routes from './Routes/Route';
+import StoreProvider from './store/storeContentex';
+
+
 
 const client = new ApolloClient({
   uri: "http://localhost:8000/api/v1/",
@@ -16,7 +20,9 @@ ReactDOM.createRoot(document.getElementById('root'))
 .render(
   <ApolloProvider client={client}>
     <React.StrictMode>
-      <App />
+      <StoreProvider>
+        <RouterProvider router={Routes} />
+      </StoreProvider>
     </React.StrictMode>
   </ApolloProvider>
 );
