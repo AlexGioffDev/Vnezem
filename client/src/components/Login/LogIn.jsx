@@ -1,8 +1,11 @@
 import React from 'react';
 import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 import { useContext } from 'react';
-import { StoreContext } from '../store/storeContentex';
-import { ACTION_TYPES } from '../store/actionTypes';
+import { StoreContext } from '../../store/storeContentex';
+import { ACTION_TYPES } from '../../store/actionTypes';
+import styles from './Login.module.css'
+import {FcGoogle} from 'react-icons/fc'
+
 
 const Login = () => {
     const provider = new GoogleAuthProvider();
@@ -31,7 +34,9 @@ const Login = () => {
     }
 
     return (
-        <button onClick={signInWithGoogle}>Login With Google</button>
+        <button
+        className={styles.btn} 
+        onClick={signInWithGoogle}>Login <FcGoogle /> </button>
     )
 }
 

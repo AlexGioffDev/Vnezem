@@ -1,18 +1,16 @@
 import React from 'react'
-import Login from './components/LogIn';
-import {Link} from 'react-router-dom'
+
+import Navbar from './components/Navbar/Navbar';
+import {RouterProvider} from 'react-router-dom';
+import Routes from './Routes/Route';
 
 function App() {
- 
- 
-
-
 
   return (
     <div className="App">
       <>
-        <Link to="/test">Test</Link>
-        <Login />
+        <Navbar />
+        <RouterProvider router={Routes} />
       </>
     </div>
   );

@@ -1,13 +1,16 @@
 import React from 'react';
+import {createBrowserRouter, Link} from 'react-router-dom'
+import Test from '../components/Test/Test';
 
-import {createBrowserRouter} from 'react-router-dom'
-import App from '../App';
-import Test from '../components/Test';
 
 const Routes = createBrowserRouter([
     {
         path: "/",
-        element: <App />
+        element: (
+            <div>
+                <Link to="/test">test</Link>
+            </div>
+        )
     },
     {
         path: "/message",

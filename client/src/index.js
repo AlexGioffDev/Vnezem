@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import {RouterProvider} from 'react-router-dom';
-import Routes from './Routes/Route';
+
 import StoreProvider from './store/storeContentex';
+import App from './App';
 
 
 
@@ -21,7 +21,8 @@ ReactDOM.createRoot(document.getElementById('root'))
   <ApolloProvider client={client}>
     <React.StrictMode>
       <StoreProvider>
-        <RouterProvider router={Routes} />
+
+        <App />
       </StoreProvider>
     </React.StrictMode>
   </ApolloProvider>
