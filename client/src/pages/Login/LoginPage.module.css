@@ -1,0 +1,30 @@
+.container {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    background-image: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 60%)), url("../../images/wall.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+.wrapper {
+    background-color: var(--color-tertiary);
+    grid-column: 3 / 11;
+    grid-row: 5 / 8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--color-tertiary), 0 0 40px var(--color-tertiary), 0 0 80px var(--color-tertiary);
+}
+
+.title {
+    text-transform: uppercase;
+    font-family: var(--font-light);
+    font-size: 2rem;
+    letter-spacing: .7rem;
+}

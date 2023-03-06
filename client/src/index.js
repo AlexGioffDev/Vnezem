@@ -21,7 +21,6 @@ ReactDOM.createRoot(document.getElementById('root'))
   <ApolloProvider client={client}>
     <React.StrictMode>
       <StoreProvider>
-
         <App />
       </StoreProvider>
     </React.StrictMode>

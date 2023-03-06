@@ -1,29 +1,27 @@
 import React from 'react';
-import {createBrowserRouter, Link} from 'react-router-dom'
-import Test from '../components/Test/Test';
-
+import {createBrowserRouter} from 'react-router-dom'
+import Home from '../pages/Home';
+import LoginPage from '../pages/Login/LoginPage';
+import Movie from '../pages/Movie/Movie';
 
 const Routes = createBrowserRouter([
     {
         path: "/",
         element: (
-            <div>
-                <Link to="/test">test</Link>
-            </div>
+            <Home />
         )
     },
     {
-        path: "/message",
+        path: "/movie/:id",
+        element: <Movie />
+    },
+    {
+        path: "/login",
         element: (
-            <div>
-                <p>Hello</p>
-            </div>
+            <LoginPage />
         )
-    },
-    {
-        path: "/test",
-        element: <Test />
     }
+    
 ])
 
 export default Routes;

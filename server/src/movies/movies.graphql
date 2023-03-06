@@ -1,39 +1,30 @@
 type Query {
-    moviesUpcoming: MoviesUpcoming
-    moviesPopular: MoviesPopular
-    moviesTopRated: MoviesTopRated
-    movie(id: ID!): Movie
+  moviesUpcoming: MoviesUpcoming
+  moviesPopular: MoviesPopular
+  moviesTopRated: MoviesTopRated
+  movie(id: ID!): Movie
 }
 
 type MoviesUpcoming {
-    movies: [MovieResult]
-    maxDate: String
+  movies: [MovieResult]
+  maxDate: String
+  minDate: String
 }
 
 type MoviesPopular {
-    movies: [MovieResult]
+  movies: [MovieResult]
 }
 
 type MoviesTopRated {
-    movies: [MovieResult]
+  movies: [MovieResult]
 }
 
-
 type MovieResult {
-    adult: Boolean
-    backdrop_path: String
-    id: Int
-    original_language: String
-    original_title: String
-    overview: String
-    popularity: Float
-    poster_path: String
-    release_date: String
-    title: String
-    video: Boolean
-    vote_average: Float
-    vote_count: Int
-    genre_ids: [Int]
+  id: Int
+  original_title: String
+  poster_path: String
+  release_date: String
+  title: String
 }
 
 type SpokenLanguages {
@@ -59,7 +50,7 @@ type Genres {
   name: String
 }
 
-type Movie {
+type MovieInfo {
   adult: Boolean
   backdrop_path: String
   belongs_to_collection: String
@@ -85,4 +76,68 @@ type Movie {
   production_countries: [ProductionCountries]
   production_companies: [ProductionCompanies]
   genres: [Genres]
+}
+
+type Crew {
+  adult: Boolean
+  gender: Int
+  id: Int
+  known_for_department: String
+  name: String
+  original_name: String
+  popularity: Float
+  profile_path: String
+  credit_id: String
+  department: String
+  job: String
+}
+
+type Cast {
+  adult: Boolean
+  gender: Int
+  id: Int
+  known_for_department: String
+  name: String
+  original_name: String
+  popularity: Float
+  profile_path: String
+  cast_id: Int
+  character: String
+  credit_id: String
+  order: Int
+}
+
+type CreditsMovie {
+  id: Int
+  crew: [Crew]
+  cast: [Cast]
+}
+
+
+type MediaImage {
+  file_path: String
+}
+
+type VideoKey {
+  key: String
+}
+
+
+type MediaImage {
+  posters: [MediaImage]
+  backdrops: [MediaImage]
+}
+
+type SimilarMovies {
+  similarMovies: [MovieResult]
+}
+
+
+
+type Movie {
+  info: MovieInfo,
+  credits: CreditsMovie,
+  images: MediaImage,
+  videos: [VideoKey],
+  similar: SimilarMovies
 }

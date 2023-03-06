@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { StoreContext } from '../../store/storeContentex';
 import styles from './Navbar.module.css'
 import Login from '../../components/Login/LogIn';
+import Logout from '../Logout/Logout';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -10,14 +12,13 @@ const Navbar = () => {
 
     
 
-
     return (
         <div className={styles.Navbar}>
-            <p className={styles.logo}>Vnezem</p>
+            <Link to="/"><p className={styles.logo}>Vnezem</p></Link>
             {user ? (
-                <button>LogOut</button>
+                <Logout size="small" />
             ) : (
-                <Login />
+                <Login size="small" />
             )}
         </div>
     )
